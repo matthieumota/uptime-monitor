@@ -1,0 +1,26 @@
+language: php
+sudo: false
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+env:
+  global:
+    - CHECK_PHP_SYNTAX="false"
+
+matrix:
+  fast_finish: true
+  include:
+    - php: 7.1
+      env: CHECK_PHP_SYNTAX="true"
+    - php: 7.2
+    - php: 7.3
+
+install:
+  - if [[ "$CHECK_PHP_SYNTAX" == "true" ]]; then composer require --dev --no-update friendsofphp/php-cs-fixer; fi;
+  - composer install --no-interaction
+
+script:
+  - vendor/bin/phpunit
+  - if [[ "$CHECK_PHP_SYNTAX" == "true" ]]; then vendor/bin/php-cs-fixer fix src --dry-run --diff; fi;
+  - if [[ "$CHECK_PHP_SYNTAX" == "true" ]]; then vendor/bin/php-cs-fixer fix tests --dry-run --diff; fi;
