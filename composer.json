@@ -1,0 +1,29 @@
+{
+  "name": "matthieumota/uptime-monitor",
+  "description": "A PHP component to check website uptime.",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Matthieu Mota",
+      "email": "matthieu@boxydev.com"
+    }
+  ],
+  "require": {
+    "php": "^7.1.3",
+    "guzzlehttp/guzzle": "^6.3"
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "autoload": {
+    "psr-4": {
+      "MatthieuMota\\Component\\UptimeMonitor\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "MatthieuMota\\Component\\UptimeMonitor\\Tests\\": "tests"
+    }
+  }
+}
