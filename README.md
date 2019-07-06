@@ -23,7 +23,7 @@ use MatthieuMota\Component\UptimeMonitor\UptimeMonitor;
 $uptimeMonitor = new UptimeMonitor();
 
 $uptimeMonitor
-	->add('https://boxydev.com')
+    ->add('https://boxydev.com')
     ->add('https://matthieumota.fr')
     ->add('https://domain.notexists')
     ->add('https://expired.badssl.com')
