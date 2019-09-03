@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the UptimeMonitor package.
+ * This file is part of the MatthieuMota package.
  *
  * (c) Matthieu Mota <matthieu@boxydev.com>
  *
