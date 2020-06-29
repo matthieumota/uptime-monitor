@@ -1,0 +1,44 @@
+name: Tests
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        php: [7.4, 7.3, 7.2]
+        include:
+          - php: 7.4
+            cs: true
+
+    name: P${{ matrix.php }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v1
+
+      - name: Cache dependencies
+        uses: actions/cache@v1
+        with:
+          path: ~/.composer/cache/files
+          key: dependencies-php-${{ matrix.php }}-composer-${{ hashFiles('composer.json') }}
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v1
+        with:
+          php-version: ${{ matrix.php }}
+
+      - name: Install dependencies
+        run: |
+          composer install --no-interaction
+
+      - name: Execute tests
+        run: vendor/bin/phpunit
+
+      - name: Execute lint
+        run: |
+          composer require --dev friendsofphp/php-cs-fixer
+          vendor/bin/php-cs-fixer fix src --dry-run --diff
+          vendor/bin/php-cs-fixer fix tests --dry-run --diff
+        if: ${{ matrix.cs }}

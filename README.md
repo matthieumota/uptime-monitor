@@ -1,7 +1,7 @@
 UptimeMonitor Component
 =======================
 
-[![Build Status](https://travis-ci.org/matthieumota/uptime-monitor.svg?branch=master)](https://travis-ci.org/matthieumota/uptime-monitor)
+![Tests](https://github.com/matthieumota/uptime-monitor/workflows/Tests/badge.svg)
 
 The UptimeMonitor component provides PHP Object Oriented library to easily monitor websites.
 
